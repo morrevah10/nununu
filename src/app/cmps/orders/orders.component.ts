@@ -30,8 +30,9 @@ export class OrdersComponent implements OnInit {
 
   getOrders() {
     this.nunuService.getOrders().subscribe(
-      (orders) => {
-        this.orders = orders;
+      (response: any) => {
+        this.orders = response.data;
+        console.log(this.orders)
       },
       (error) => {
         console.error('Error fetching orders:', error);
@@ -53,11 +54,35 @@ export class OrdersComponent implements OnInit {
       this.nunuService.submitOrder(formData).subscribe(
         (response) => {
           console.log('Order submitted successfully');
+          this.getOrders()
         },
         (error) => {
           console.error('Error submitting order:', error);
         }
       );
     }
+  }
+
+
+  deleteOrder(order: any) {
+    console.log(order)
+    // this.nunuService.deleteOrder(order.id).subscribe(
+    //   (response: any) => {
+    //     if (response.message === 'success') {
+    //       this.getOrders()
+    //       this.orders = this.orders.filter(o => o.id !== order.id);
+    //       console.log('Order deleted successfully');
+    //     } else {
+    //       console.error('Error deleting order:', response.message);
+    //     }
+    //   },
+    //   (error) => {
+    //     console.error('Error deleting order:', error);
+    //   }
+    // );
+  }
+
+  navigateToStockPage() {
+    this.router.navigate(['/stocks']);
   }
 }

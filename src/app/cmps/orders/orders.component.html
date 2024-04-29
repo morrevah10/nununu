@@ -1,6 +1,7 @@
-<p>orders works!</p>
 <section class="orders-container">
+
   <div class="orders-content">
+
     <div class="form">
       <form [formGroup]="ordersForm">
         <div class="form-group">
@@ -33,25 +34,44 @@
         <button (click)="onFormSubmit()" [disabled]="!ordersForm.valid">Submit Order</button>
       </div>
     </div>
+    
   </div>
-</section>
 
 
-<section *ngIf="orders.length > 0">
-  <h2>orders</h2>
+<div>
+    <button (click)="navigateToStockPage()">To Stocks</button>
+</div>
+
+
+<div class="table" *ngIf="orders.length > 0">
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <!-- Add more columns if needed -->
+        <th>id</th>
+        <th>order_name</th>
+        <th>customer_name</th>
+        <th>total_qty_order</th>
+        <th>available</th>
+        <th>date_time</th>
+        <th>
+           מחק
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{ order.name }}</td>
-        <!-- Display more order information here -->
+        <td>{{ order.id }}</td>
+        <td>{{ order.order_name }}</td>
+        <td>{{ order.customer_name }}</td>
+        <td>{{ order.total_qty_order }}</td>
+        <td>{{ order.available }}</td>
+        <td>{{ order.date_time }}</td>
+        <td>
+            <button (click)="deleteOrder(order.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 
+</div>
 </section>

@@ -1,0 +1,55 @@
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-top: 50px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+form {
+  margin: 0;
+  margin-bottom: 50px; 
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+button:hover {
+  background-color: #007bff;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.stocks-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.stocks-content {
+  text-align: center;
+}
+
+

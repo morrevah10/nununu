@@ -1,14 +1,18 @@
 <section class="login-container">
   <div class="login-content">
+
+    <div class="image-container">
+      <img src="../../../assets/imgs/צילום מסך 2024-04-29 212622.png" alt="Your Image">
+    </div>
+
     <div class="title">
       <p class="text">{{ greetingMessage }}</p>
-      <p class="text">בוא נתחבר לחשבון שלך</p>
     </div>
 
     <div class="form">
       <form [formGroup]="loginForm">
         <div class="form-group">
-          <label class="small-text" for="email">*אימייל</label>
+          <label class="small-text" for="email"></label>
           <input
             type="text"
             formControlName="email"
@@ -18,23 +22,24 @@
             }"
           />
           <div *ngIf="loginForm.get('email')?.errors" class="invalid-feedback">
-            <div
+            <!-- <div
               class="required"
               *ngIf="loginForm.get('email')?.hasError('required')"
             >
               אימייל הוא שדה חובה
-            </div>
-            <div *ngIf="loginForm.get('email')?.hasError('email')">
+            </div> -->
+            <!-- <div *ngIf="loginForm.get('email')?.hasError('email')">
               הכנס כתובת אימייל חוקית
-            </div>
+            </div> -->
           </div>
         </div>
       </form>
-
-      <div class="btn login-btn">
-        <button (click)="onFormSubmit()" [disabled]="!loginForm.valid">התחברות</button>
-      </div>
-
     </div>
+
+
+    <div class="btn login-btn">
+      <button (click)="onFormSubmit()" [disabled]="!loginForm.valid">התחברות</button>
+    </div>
+
   </div>
 </section>
