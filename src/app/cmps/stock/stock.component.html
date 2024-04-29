@@ -1,0 +1,50 @@
+<p>stock works!</p>
+<p>orders works!</p>
+<section class="stocks-container">
+  <div class="stocks-content">
+    <div class="form">
+      <form [formGroup]="stocksForm">
+        <div class="form-group">
+          <label class="small-text" for="name">name:</label>
+          <input
+            type="text"
+            formControlName="orderNumber"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label class="small-text" for="file">file:</label>
+          <input
+            type="file"
+            formControlName="customerName"
+            class="form-control"
+          />
+        </div>
+      </form>
+
+      <div class="btn login-btn">
+        <button (click)="onFormSubmit()" [disabled]="!stocksForm.valid">Submit Order</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section *ngIf="stocks.length > 0">
+  <h2>stocks</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <!-- Add more columns if needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of stocks">
+        <td>{{ stock.name }}</td>
+        <!-- Display more order information here -->
+      </tr>
+    </tbody>
+  </table>
+
+</section>

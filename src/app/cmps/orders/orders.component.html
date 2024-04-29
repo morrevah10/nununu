@@ -1,0 +1,57 @@
+<p>orders works!</p>
+<section class="orders-container">
+  <div class="orders-content">
+    <div class="form">
+      <form [formGroup]="ordersForm">
+        <div class="form-group">
+          <label class="small-text" for="orderNumber">Order Number:</label>
+          <input
+            type="text"
+            formControlName="orderNumber"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label class="small-text" for="customerName">Customer Name:</label>
+          <input
+            type="text"
+            formControlName="customerName"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label class="small-text" for="customerFile">Customer File (Excel):</label>
+          <input
+            type="file"
+            formControlName="customerFile"
+            class="form-control"
+          />
+        </div>
+      </form>
+
+      <div class="btn login-btn">
+        <button (click)="onFormSubmit()" [disabled]="!ordersForm.valid">Submit Order</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section *ngIf="orders.length > 0">
+  <h2>orders</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <!-- Add more columns if needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.name }}</td>
+        <!-- Display more order information here -->
+      </tr>
+    </tbody>
+  </table>
+
+</section>

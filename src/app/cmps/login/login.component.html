@@ -1,0 +1,40 @@
+<section class="login-container">
+  <div class="login-content">
+    <div class="title">
+      <p class="text">{{ greetingMessage }}</p>
+      <p class="text">בוא נתחבר לחשבון שלך</p>
+    </div>
+
+    <div class="form">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label class="small-text" for="email">*אימייל</label>
+          <input
+            type="text"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': loginForm.get('email')?.errors
+            }"
+          />
+          <div *ngIf="loginForm.get('email')?.errors" class="invalid-feedback">
+            <div
+              class="required"
+              *ngIf="loginForm.get('email')?.hasError('required')"
+            >
+              אימייל הוא שדה חובה
+            </div>
+            <div *ngIf="loginForm.get('email')?.hasError('email')">
+              הכנס כתובת אימייל חוקית
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="btn login-btn">
+        <button (click)="onFormSubmit()" [disabled]="!loginForm.valid">התחברות</button>
+      </div>
+
+    </div>
+  </div>
+</section>
