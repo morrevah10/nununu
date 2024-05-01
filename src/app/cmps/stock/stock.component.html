@@ -3,10 +3,10 @@
     <div class="form">
       <form [formGroup]="stocksForm">
         <div class="form-group">
-          <label class="small-text" for="name">Stock Name:</label>
+          <label class="small-text" for="drop_name">Stock Name:</label>
           <input
             type="text"
-            formControlName="name"
+            formControlName="drop_name"
             class="form-control"
           />
         </div>
@@ -38,6 +38,8 @@
           <th>drop_name</th>
           <th>drop_qty</th>
           <th>drop_warehouse_id</th>
+          <th>Delete</th>
+          <th>download</th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +48,12 @@
           <td>{{ stock.drop_name }}</td>
           <td>{{ stock.drop_qty }}</td>
           <td>{{ stock.drop_warehouse_id }}</td>
+          <td>
+            <button (click)="deleteOrder(stock)">Delete</button>
+          </td>
+          <td>
+            <button (click)="downloadOrder(stock)">download</button>
+          </td>
         </tr>
       </tbody>
     </table>

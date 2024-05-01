@@ -23,8 +23,8 @@ export class StockComponent implements OnInit {
 
   ngOnInit() {
     this.stocksForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      file: [null, [Validators.required]],  // Expect a File object here
+      drop_name: ['', [Validators.required]],
+      file: [null, [Validators.required]],  
     });
     this.getStocks();
   }
@@ -57,20 +57,31 @@ export class StockComponent implements OnInit {
   onFormSubmit() {
     if (this.stocksForm.valid) {
       const formData = new FormData();
-      formData.append('stock_name', this.stocksForm.value.name);
-      formData.append('stock_file', this.stocksForm.value.file);  // Ensure the correct form data keys
+      console.log('stock_name', this.stocksForm.value.drop_name);
+      console.log('stock_file', this.stocksForm.value.file)
+      formData.append('drop_name', this.stocksForm.value.drop_name);
+      formData.append('file', this.stocksForm.value.file);  
 
       this.nunuService.submitStock(formData).subscribe(
         (response: any) => {
+          console.log(response)
           console.log('Stock submitted successfully');
-          this.getStocks();  // Refresh the stocks list
+          this.getStocks();  
         },
-        (error: HttpErrorResponse) => {  // Explicitly type the error parameter
+        (error: HttpErrorResponse) => {  
           console.error('Error submitting stock:', error.message);
         }
       );
     }
   }
+
+  deleteOrder(stock: any) {
+    console.log(stock)
+  }
+
+  downloadOrder(stock: any) {
+   console.log(stock)
+ }
 
   navigateToOrdersPage() {
     this.router.navigate(['/orders']);

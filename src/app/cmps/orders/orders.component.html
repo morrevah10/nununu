@@ -54,6 +54,7 @@
           <th>Available</th>
           <th>Date & Time</th>
           <th>Delete</th>
+          <th>download</th>
         </tr>
       </thead>
       <tbody>
@@ -66,6 +67,9 @@
           <td>{{ order.date_time }}</td>
           <td>
             <button (click)="deleteOrder(order)">Delete</button>
+          </td>
+          <td>
+            <button (click)="downloadOrder(order)">download</button>
           </td>
         </tr>
       </tbody>

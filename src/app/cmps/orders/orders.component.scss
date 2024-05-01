@@ -1,7 +1,8 @@
 table {
     border-collapse: collapse;
-    margin-top: 20px;
+    // margin-top: 20px;
     margin-top: 50px;
+    margin-bottom: 50px; 
   }
   
   th,
@@ -16,7 +17,7 @@ table {
   }
 
   form {
-    margin: 0;
+    margin: 50px;
     margin-bottom: 50px; 
   }
 
@@ -41,7 +42,7 @@ table {
 
 
   .orders-container {
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     justify-content: center; 
     align-items: center; 

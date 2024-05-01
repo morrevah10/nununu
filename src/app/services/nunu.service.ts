@@ -25,6 +25,11 @@ export class NunuService {
     return this.http.post<any>(`${this.baseUrl}/upload_new_order/`, formData);
   }
 
+  submitStock(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/upload_drop_warehouse/`, formData);
+  }
+  
+
   getOrders(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/get_all_orders/`);
   }
@@ -37,9 +42,7 @@ export class NunuService {
     return this.http.delete<any[]>(`${this.baseUrl}/delete_order/${orderId}`);
   }
 
-  submitStock(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/upload_drop_warehouse/`, formData);
-  }
+
 
 
 }

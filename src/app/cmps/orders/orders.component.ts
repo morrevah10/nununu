@@ -75,6 +75,10 @@ export class OrdersComponent implements OnInit {
      console.log(order)
    }
 
+   downloadOrder(order: any) {
+    console.log(order)
+  }
+
    navigateToStockPage() {
      this.router.navigate(['/stocks']);
    }
