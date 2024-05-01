@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class NunuService {
   // private baseUrl = 'http://127.0.0.1:8000';
-  private baseUrl = 'https://nununu-project-production.up.railway.app/'
+  private baseUrl = 'https://nununu-project-production.up.railway.app'
   private registeredEmail: string = 'morrevah10@gmail.com';
 
 
@@ -36,4 +36,10 @@ export class NunuService {
   deleteOrder(orderId: number): Observable<any[]> {
     return this.http.delete<any[]>(`${this.baseUrl}/delete_order/${orderId}`);
   }
+
+  submitStock(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/upload_drop_warehouse/`, formData);
+  }
+
+
 }

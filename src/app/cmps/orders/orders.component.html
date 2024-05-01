@@ -5,7 +5,7 @@
     <div class="form">
       <form [formGroup]="ordersForm">
         <div class="form-group">
-          <label class="small-text" for="orderNumber">Order Number:</label>
+          <label class="small-text" for="orderNumber">Order Name:</label>
           <input
             type="text"
             formControlName="orderNumber"
@@ -24,7 +24,7 @@
           <label class="small-text" for="customerFile">Customer File (Excel):</label>
           <input
             type="file"
-            formControlName="customerFile"
+            (change)="onFileSelect($event)"
             class="form-control"
           />
         </div>
@@ -33,45 +33,42 @@
       <div class="btn login-btn">
         <button (click)="onFormSubmit()" [disabled]="!ordersForm.valid">Submit Order</button>
       </div>
+      <br>
+
     </div>
     
   </div>
 
-
-<div>
+  <div>
     <button (click)="navigateToStockPage()">To Stocks</button>
-</div>
+  </div>
 
-
-<div class="table" *ngIf="orders.length > 0">
-  <table>
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>order_name</th>
-        <th>customer_name</th>
-        <th>total_qty_order</th>
-        <th>available</th>
-        <th>date_time</th>
-        <th>
-           מחק
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{ order.id }}</td>
-        <td>{{ order.order_name }}</td>
-        <td>{{ order.customer_name }}</td>
-        <td>{{ order.total_qty_order }}</td>
-        <td>{{ order.available }}</td>
-        <td>{{ order.date_time }}</td>
-        <td>
-            <button (click)="deleteOrder(order.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
+  <div class="table" *ngIf="orders.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Order Number</th>
+          <th>Customer Name</th>
+          <th>Total Qty Order</th>
+          <th>Available</th>
+          <th>Date & Time</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.order_name }}</td>
+          <td>{{ order.customer_name }}</td>
+          <td>{{ order.total_qty_order }}</td>
+          <td>{{ order.available }}</td>
+          <td>{{ order.date_time }}</td>
+          <td>
+            <button (click)="deleteOrder(order)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

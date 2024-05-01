@@ -3,7 +3,7 @@
     <div class="form">
       <form [formGroup]="stocksForm">
         <div class="form-group">
-          <label class="small-text" for="name">name:</label>
+          <label class="small-text" for="name">Stock Name:</label>
           <input
             type="text"
             formControlName="name"
@@ -11,47 +11,49 @@
           />
         </div>
         <div class="form-group">
-          <label class="small-text" for="file">file:</label>
+          <label class="small-text" for="file">Stock File:</label>
           <input
             type="file"
-            formControlName="file"
+            (change)="onFileSelect($event)"
             class="form-control"
           />
         </div>
       </form>
 
       <div class="btn login-btn">
-        <button (click)="onFormSubmit()" [disabled]="!stocksForm.valid">Submit Order</button>
+        <button (click)="onFormSubmit()" [disabled]="!stocksForm.valid">Submit Stock</button>
       </div>
     </div>
   </div>
-
-
-
-<div class="table" *ngIf="stocks.length > 0">
-  <table>
-    <thead>
-      <tr>
-        <th>date_time</th>
-        <th>drop_name</th>
-        <th>drop_qty</th>
-        <th>drop_warehouse_id</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let stock of stocks">
-        <td>{{ stock.date_time }}</td>
-        <td>{{ stock.drop_name }}</td>
-        <td>{{ stock.drop_qty }}</td>
-        <td>{{ stock.drop_warehouse_id }}</td>
-      </tr>
-    </tbody>
-  </table>
-
+  <br>
   <div>
-    <p>total  :  {{total}}</p>
+    <button (click)="navigateToOrdersPage()">To Orders</button>
   </div>
 
-</div>
+  <div class="table" *ngIf="stocks.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>date_time</th>
+          <th>drop_name</th>
+          <th>drop_qty</th>
+          <th>drop_warehouse_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of stocks">
+          <td>{{ stock.date_time }}</td>
+          <td>{{ stock.drop_name }}</td>
+          <td>{{ stock.drop_qty }}</td>
+          <td>{{ stock.drop_warehouse_id }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <p>total  :  {{total}}</p>
+    </div>
+
+  </div>
 
 </section>
